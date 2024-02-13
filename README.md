@@ -2,9 +2,8 @@
 ## Top Three
 ### Provide the body of the class Top which implements the interface Sequence detailed below.
 ### Submission Instructions
-
-First, please make sure that you do not modify the signature of the Top class. This is required for the autograder to run.<br>
-You can keep making changes until the submission deadline. Your code will be frozen and marked after the deadline has passed.
+> First, please make sure that you do not modify the signature of the Top class. This is required for the autograder to run.<br>
+> You can keep making changes until the submission deadline. Your code will be frozen and marked after the deadline has passed.
 
 In this problem, you are to write a class Top that implements the following interface:
       <pre>
@@ -50,7 +49,6 @@ As an example, the code fragment
       System.out.println( t.getTopThree());
       
 would result in the following being printed out:
-
 #    
       [a, abba, b]
       [Jim, Jules]
