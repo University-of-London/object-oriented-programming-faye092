@@ -29,8 +29,7 @@ The reset() method should reset the tracking.
 
 ### Your class should not maintain a collection of all of the strings seen; the member variable(s) of your class should store a number of strings that stays below a fixed limit, regardless of how many times the push method is called.
 As an example, the code fragment
-      <pre>
-      <code class="language-cpp">
+#
       Top t = new Top();
       t.push( "b");
       t.push( "a" );
@@ -48,8 +47,6 @@ As an example, the code fragment
           t.push( "" + ch );
       }
       System.out.println( t.getTopThree());
-      </code>
-      </pre>
       
 would result in the following being printed out:
 
