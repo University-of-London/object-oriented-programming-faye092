@@ -7,7 +7,6 @@ First, please make sure that you do not modify the signature of the Top class. T
 You can keep making changes until the submission deadline. Your code will be frozen and marked after the deadline has passed.
 
 In this problem, you are to write a class Top that implements the following interface:
-      <pre>
       <code class="language-cpp">
       public interface Sequence
       {
@@ -16,7 +15,6 @@ In this problem, you are to write a class Top that implements the following inte
           void reset();
       }
       </code>
-      </pre>
 This interface is provided in a file called <strong> Sequence.java </strong> and a skeleton for the class is provided in <strong>Top.java</strong> for you.
 
 Your class should in particular implement these methods so that it keeps track of the lowest 3 strings that have been passed to the method <strong>push</strong>. 
