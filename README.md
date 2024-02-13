@@ -18,10 +18,11 @@ In this problem, you are to write a class Top that implements the following inte
       </code>
       </pre>
 This interface is provided in a file called <strong> Sequence.java </strong> and a skeleton for the class is provided in <strong>Top.java</strong> for you.
-
+#
 Your class should in particular implement these methods so that it keeps track of the lowest 3 strings that have been passed to the method <strong>push</strong>. 
 Here, when we say lowest, we mean according to the <strong>compareTo()</strong> method of the <strong>String</strong> class; here, when str1 and st2 are Strings, we consider str1 lower than str2 when <strong>str1.compareTo(str2)</strong> returns a negative value. 
 Strings that are repeats of previously seen strings should be ignored.
+#
 The getTopThree() method should create a <strong>new</strong> object of type ArrayList, populate it with the lowest 3 strings seen so far (via <strong>push</strong>), in lowest-to-highest order, and return the object. 
 As repeats should be ignored, no two entries of the returned list should be textually equal to each other. If the number of strings that was seen is strictly less than 3, then all of those strings should be present in the returned list.
 
@@ -50,10 +51,7 @@ As an example, the code fragment
       
 would result in the following being printed out:
 
-      <pre>
-      <code class="language-cpp">      
+#    
       [a, abba, b]
       [Jim, Jules]
       [I, J, Jim]
-      </code>
-      </pre>
