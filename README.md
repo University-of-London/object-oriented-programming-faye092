@@ -50,7 +50,9 @@ As an example, the code fragment
       System.out.println( t.getTopThree());
       </code>
       </pre>
+      
 would result in the following being printed out:
+
       <pre>
       <code class="language-cpp">      
       [a, abba, b]
