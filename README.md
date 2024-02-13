@@ -1,6 +1,6 @@
 # Problem Set 1
 ## Top Three
-> ### Provide the body of the class Top which implements the interface Sequence detailed below.
+### Provide the body of the class Top which implements the interface Sequence detailed below.
 > ### Submission Instructions
 > First, please make sure that you do not modify the signature of the Top class. This is required for the autograder to run.<br>
 > You can keep making changes until the submission deadline. Your code will be frozen and marked after the deadline has passed.
@@ -27,7 +27,7 @@ As repeats should be ignored, no two entries of the returned list should be text
 
 The reset() method should reset the tracking.
 
-### Your class should not maintain a collection of all of the strings seen; the member variable(s) of your class should store a number of strings that stays below a fixed limit, regardless of how many times the push method is called.
+> ### Your class should not maintain a collection of all of the strings seen; the member variable(s) of your class should store a number of strings that stays below a fixed limit, regardless of how many times the push method is called.
 As an example, the code fragment
 #
       Top t = new Top();
