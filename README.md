@@ -1,7 +1,7 @@
 # Problem Set 1
 ## Top Three
-### Provide the body of the class Top which implements the interface Sequence detailed below.
-### Submission Instructions
+> ### Provide the body of the class Top which implements the interface Sequence detailed below.
+> ### Submission Instructions
 > First, please make sure that you do not modify the signature of the Top class. This is required for the autograder to run.<br>
 > You can keep making changes until the submission deadline. Your code will be frozen and marked after the deadline has passed.
 
