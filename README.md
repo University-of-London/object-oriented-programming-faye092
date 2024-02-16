@@ -5,7 +5,7 @@
 > First, please make sure that you do not modify the signature of the Top class. This is required for the autograder to run.<br>
 > You can keep making changes until the submission deadline. Your code will be frozen and marked after the deadline has passed.
 
-In this problem, you are to write a class Top that implements the following interface:
+- In this problem, you are to write a class Top that implements the following interface:
       <pre>
       <code class="language-cpp">
       public interface Sequence
