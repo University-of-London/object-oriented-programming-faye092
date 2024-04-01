@@ -41,12 +41,15 @@ public class SaddlePointsTest {
         int[] array = new int[0];
         int[] finalArray = array;
         assertThrows(IllegalArgumentException.class, () -> sp.largest(finalArray));
+
         //test array with one element
         array = new int[]{5};
         assertEquals(5, sp.largest(array));
+
         //test array with multiple elements
         array = new int[]{8,15,11,9,12};
         assertEquals(15, sp.largest(array));
+
         //test array with repeated elements
         array = new int[]{8,15,11,9,12,15};
         assertEquals(15, sp.largest(array));
@@ -115,12 +118,16 @@ public class SaddlePointsTest {
         //test array with one element
         array = new int[]{1};
         assertEquals(-1, sp.saddlePointRow(new int[][]{array}));
+
         //test array with Saddle Point
         int[][] array2 = {{1,5,3},{2,4,7}};
         assertEquals(1, sp.saddlePointRow(array2));
+
         //test array with multiple Saddle Points
         int[][] array3 = {{1,5,3},{2,5,7},{3,5,9}};
+
         assertEquals(1, sp.saddlePointRow(array3));
+
         //test array with no Saddle Point
         int[][] array4 = {{1,5,3},{2,4,7},{3,7,9}};
         assertEquals(-1, sp.saddlePointRow(array4));
@@ -132,15 +139,19 @@ public class SaddlePointsTest {
         int[] array = new int[0];
         int[] finalArray = array;
         assertThrows(IllegalArgumentException.class, () -> sp.saddlePointColumn(new int[][]{finalArray}));
+
         //test array with one element
         array = new int[]{1};
         assertEquals(-1, sp.saddlePointColumn(new int[][]{array}));
+
         //test array with Saddle Point
         int[][] array2 = {{1,5,3},{2,4,7}};
         assertEquals(1, sp.saddlePointColumn(array2));
+
         //test array with multiple Saddle Points
         int[][] array3 = {{1,5,3},{2,5,7},{3,5,9}};
         assertEquals(1, sp.saddlePointColumn(array3));
+
         //test array with no Saddle Point
         int[][] array4 = {{1,5,3},{2,4,7},{3,7,9}};
         assertEquals(-1, sp.saddlePointColumn(array4));
