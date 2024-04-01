@@ -12,8 +12,12 @@ public class SaddlePointsTest {
     private saddlePoints.SaddlePoints sp;
 
     @Before
-    public void setUp() throws Exception{
-         sp = new saddlePoints.SaddlePoints(); // create an instance variable
+    public void setUp() {
+         try{
+             sp = new saddlePoints.SaddlePoints(); // create an instance variable
+         }catch (Exception e){
+             fail("Failed to create SaddlePoints instance");
+         }
     }
 
     @Test
