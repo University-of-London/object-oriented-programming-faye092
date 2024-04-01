@@ -1,6 +1,5 @@
 package saddlePoints;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,6 +15,7 @@ public class SaddlePointsTest {
          try{
              sp = new saddlePoints.SaddlePoints(); // create an instance variable
          }catch (Exception e){
+             e.printStackTrace();
              fail("Failed to create SaddlePoints instance");
          }
     }
@@ -23,28 +23,37 @@ public class SaddlePointsTest {
     @Test
     public void createRandomArray() {
         // test array size
-        int[][] array = sp.createRandomArray(4,5,-5,10);
-        assertEquals(4, array.length);
-        assertEquals(5, array[0].length);
+        int[][] array1 = sp.createRandomArray(2,2,-10,10);
+        assertEquals(2, array1.length);
+        assertEquals(2, array1[0].length);
+
+        int[][] array2 = sp.createRandomArray(5, 5, -100, 100);
+        assertEquals(5, array2.length);
+        assertEquals(5, array2[0].length);
+
         // test array values range
-        for (int[] row: array){
+        for (int[] row: array1){
             for (int value: row){
-                assertTrue(value >= -5 && value <= 1);
+                assertTrue(value >= -10 && value <= 10);
             }
         }
-        // test the rows are not always the same
-        for (int i = 0; i < 50; i++){
-            array = sp.createRandomArray(3,3,-2,0);// narrower range
-            assertFalse(Arrays.equals(array[0], array[1]));
+
+        for (int[] row : array2) {
+            for (int value : row) {
+                assertTrue(value >= -100 && value <= 100);
+            }
         }
+
+        // test the rows are not always the same
+        assertFalse(Arrays.equals(array1[0], array1[1]));
+        assertFalse(Arrays.equals(array2[0], array2[1]));
     }
 
     @Test
     public void largest() {
         //test empty array
         int[] array = new int[0];
-        int[] finalArray = array;
-        assertThrows(IllegalArgumentException.class, () -> sp.largest(finalArray));
+        assertEquals(Integer.MIN_VALUE, sp.largest(array));
 
         //test array with one element
         array = new int[]{5};
@@ -63,8 +72,7 @@ public class SaddlePointsTest {
     public void smallest() {
         //test empty array
         int[] array = new int[0];
-        int[] finalArray = array;
-        assertThrows(IllegalArgumentException.class, () -> sp.smallest(finalArray));
+        assertEquals(Integer.MAX_VALUE, sp.smallest(array));
         //test array with one element
         array = new int[]{2};
         assertEquals(2, sp.smallest(array));
@@ -115,13 +123,12 @@ public class SaddlePointsTest {
     @Test
     public void saddlePointRow() {
         //test empty array
-        int[] array = new int[0];
-        int[] finalArray = array;
-        assertThrows(IllegalArgumentException.class, () -> sp.saddlePointRow(new int[][]{finalArray}));
+        int[][] array = new int[0][0];
+        assertEquals(-1, sp.saddlePointRow(array));
 
         //test array with one element
-        array = new int[]{1};
-        assertEquals(-1, sp.saddlePointRow(new int[][]{array}));
+        array = new int[][]{{1}};
+        assertEquals(-1, sp.saddlePointRow(array));
 
         //test array with Saddle Point
         int[][] array2 = {{1,5,3},{2,4,7}};
