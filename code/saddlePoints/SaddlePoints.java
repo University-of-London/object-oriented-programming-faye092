@@ -6,7 +6,7 @@ import java.util.Random;
  * Creates a number of random arrays, and checks each array to see
  * if it contains a saddle point. Prints the arrays and the results.
  *
- * @author
+ * @author faye
  */
 public class SaddlePoints {
     /**
@@ -53,6 +53,17 @@ public class SaddlePoints {
      * @param array The array to be checked.
      */
     void printArrayInfo(int[][] array) {
+        if (array == null) throw new NullPointerException("Input array cannot be null");
+
+        if (array.length == 0) throw new IllegalArgumentException("Input array cannot be empty");
+
+        if (array[0].length == 0) throw new IllegalArgumentException("Input array cannot have empty rows");
+
+        if (array.length == 1 && array[0].length == 1){
+            System.out.println("Array has a saddle point at row 0, column 0, value " + array[0][0]);
+            return;
+        }
+
         if (hasSaddlePoint(array)){
             int row = saddlePointRow(array);
             int col = saddlePointColumn(array);
@@ -161,6 +172,10 @@ public class SaddlePoints {
      * @return True if the array has a saddle point, else false.
      */
     boolean hasSaddlePoint(int[][] array) {
+        if(array == null || array.length == 0 || array[0].length == 0){
+            throw new IllegalArgumentException("Input array cannot be null or empty");
+        }
+
         int[] rowMins = smallestValues(array);
         int[] colMaxs = largestValues(array);
 
@@ -185,6 +200,10 @@ public class SaddlePoints {
     int saddlePointRow(int[][] array) {
         if (array == null) {
             throw new NullPointerException("Input array cannot be null");
+        }
+
+        if (array.length == 0 || array[0].length == 0) {
+            throw new IllegalArgumentException("Input array cannot be empty");
         }
 
         int[] rowMins = smallestValues(array);
@@ -213,6 +232,10 @@ public class SaddlePoints {
     int saddlePointColumn(int[][] array) {
         if (array == null) {
             throw new NullPointerException("Input array cannot be null");
+        }
+        
+        if (array.length == 0 || array[0].length == 0) {
+            throw new IllegalArgumentException("Input array cannot be empty");
         }
 
         int[] rowMins = smallestValues(array);
