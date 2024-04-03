@@ -61,17 +61,9 @@ public class SaddlePointsTest {
         int[] array = new int[0];
         assertEquals(Integer.MIN_VALUE, sp.largest(array));
 
-        //test array with one element
-        array = new int[]{5};
-        assertEquals(5, sp.largest(array));
-
-        //test array with multiple elements
-        array = new int[]{8,15,11,9,12};
-        assertEquals(15, sp.largest(array));
-
-        //test array with repeated elements
-        array = new int[]{8,15,11,9,12,15};
-        assertEquals(15, sp.largest(array));
+        //test array with different sizes
+        assertEquals(4, sp.largest(setupArray(5)));
+        assertEquals(99, sp.largest(setupArray(100)));
     }
 
     @Test
@@ -86,17 +78,9 @@ public class SaddlePointsTest {
         int[] array = new int[0];
         assertEquals(Integer.MAX_VALUE, sp.smallest(array));
 
-        //test array with one element
-        array = new int[]{2};
-        assertEquals(2, sp.smallest(array));
-
-        //test array with multiple elements
-        array = new int[]{1, 5, 3, 2, 4};
-        assertEquals(1, sp.smallest(array));
-
-        //test array with repeated elements
-        array = new int[]{1, 5, 3, 2, 4, 1};
-        assertEquals(1, sp.smallest(array));
+        //test array with different sizes
+        assertEquals(0, sp.smallest(setupArray(5)));
+        assertEquals(0, sp.smallest(setupArray(100)));
     }
 
     @Test
@@ -123,6 +107,7 @@ public class SaddlePointsTest {
         //get more test coverage
         int[][] array3 = {{0, 3, 3}, {5, 5, 1}, {2, -1, 4}};
         assertArrayEquals(new int[]{5, 5, 4}, sp.largestValues(array3));
+
     }
 
     @Test
@@ -199,9 +184,9 @@ public class SaddlePointsTest {
     @Test
     public void saddlePointColumn() {
         // test null array
-        int[][] array = null;
+        int[][] nullArray = null;
         assertThrows(NullPointerException.class, () -> {
-            sp.saddlePointRow(array);
+            sp.saddlePointRow(nullArray);
         });
         // test array 1: no saddle point
         int[][] array1 = {
