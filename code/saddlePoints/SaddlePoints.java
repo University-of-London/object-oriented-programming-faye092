@@ -131,6 +131,10 @@ public class SaddlePoints {
      * @return An array of the largest values in each column.
      */
     int[] largestValues(int[][] array) {
+        if(array == null || array.length == 0 || array[0].length == 0){
+            throw new IllegalArgumentException("Input array cannot be null or empty");
+        }
+
         int[] largestValues = new int[array[0].length]; //Column length
 
         for (int col = 0; col < largestValues.length; col++) {
@@ -151,6 +155,10 @@ public class SaddlePoints {
      * @return An array of the smallest values in each row.
      */
     int[] smallestValues(int[][] array) {
+        if(array == null || array.length == 0 || array[0].length == 0){
+            throw new IllegalArgumentException("Input array cannot be null or empty");
+        }
+
         int[] smallestValues = new int[array.length];
 
         for (int row = 0; row < smallestValues.length; row++){
@@ -233,7 +241,7 @@ public class SaddlePoints {
         if (array == null) {
             throw new NullPointerException("Input array cannot be null");
         }
-        
+
         if (array.length == 0 || array[0].length == 0) {
             throw new IllegalArgumentException("Input array cannot be empty");
         }

@@ -51,6 +51,12 @@ public class SaddlePointsTest {
 
     @Test
     public void largest() {
+        //test null array
+        int[] nullArray = null;
+        assertThrows(NullPointerException.class, () -> {
+            sp.largest(nullArray);
+        });
+
         //test empty array
         int[] array = new int[0];
         assertEquals(Integer.MIN_VALUE, sp.largest(array));
@@ -70,15 +76,24 @@ public class SaddlePointsTest {
 
     @Test
     public void smallest() {
+        //test null array
+        int[] nullArray = null;
+        assertThrows(NullPointerException.class, () -> {
+            sp.largest(nullArray);
+        });
+
         //test empty array
         int[] array = new int[0];
         assertEquals(Integer.MAX_VALUE, sp.smallest(array));
+
         //test array with one element
         array = new int[]{2};
         assertEquals(2, sp.smallest(array));
+
         //test array with multiple elements
         array = new int[]{1, 5, 3, 2, 4};
         assertEquals(1, sp.smallest(array));
+
         //test array with repeated elements
         array = new int[]{1, 5, 3, 2, 4, 1};
         assertEquals(1, sp.smallest(array));
@@ -86,26 +101,65 @@ public class SaddlePointsTest {
 
     @Test
     public void largestValues() {
-        int[][] array = {{1,5,3},{-2,8,7}};
-        assertArrayEquals(new int[]{1,8,7}, sp.largestValues(array));
+        //test null array and empty array
+        int[][] nullArray = null;
+        int[][] emptyArray = new int[0][0];
+        assertThrows(IllegalArgumentException.class, () -> {
+            sp.largestValues(nullArray);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            sp.largestValues(emptyArray);
+        });
+
+        //test array with single row
+        int[][] array1 = {{1,5,3}};
+        assertArrayEquals(new int[]{1,5,3}, sp.largestValues(array1));
+
+        //test array with more than one row
+        int[][] array2 = {{1,5,3},{-2,8,7}};
+        assertArrayEquals(new int[]{1,8,7}, sp.largestValues(array2));
 
         //get more test coverage
-        int[][] array2 = {{0, 3, 3}, {5, 5, 1}, {2, -1, 4}};
-        assertArrayEquals(new int[]{5, 5, 4}, sp.largestValues(array2));
+        int[][] array3 = {{0, 3, 3}, {5, 5, 1}, {2, -1, 4}};
+        assertArrayEquals(new int[]{5, 5, 4}, sp.largestValues(array3));
     }
 
     @Test
     public void smallestValues() {
-        int[][] array = {{1,5,3},{-2,8,7}};
-        assertArrayEquals(new int[]{1,-2}, sp.smallestValues(array));
+        //test null array and empty array
+        int[][] nullArray = null;
+        int[][] emptyArray = new int[0][0];
+        assertThrows(IllegalArgumentException.class, () -> {
+            sp.largestValues(nullArray);
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            sp.largestValues(emptyArray);
+        });
+
+        //test array with single row
+        int[][] array1 = {{1,5,3}};
+        assertArrayEquals(new int[]{1}, sp.smallestValues(array1));
+
+        //test array with more than one row
+        int[][] array2 = {{1,5,3},{-2,8,7}};
+        assertArrayEquals(new int[]{1,-2}, sp.smallestValues(array2));
 
         //get more test coverage
-        int[][] array2 = {{0, 3, 3}, {5, 5, 1}, {2, -1, 4}};
-        assertArrayEquals(new int[]{0, 1, -1}, sp.smallestValues(array2));
+        int[][] array3 = {{0, 3, 3}, {5, 5, 1}, {2, -1, 4}};
+        assertArrayEquals(new int[]{0, 1, -1}, sp.smallestValues(array3));
     }
 
     @Test
     public void hasSaddlePoint() {
+        //test null array
+        int[][] nullArray = null;
+        assertThrows(IllegalArgumentException.class, () -> {
+            sp.hasSaddlePoint(nullArray);
+        });
+
+        //test array with saddle point and without saddle point
         int[][] with = {
                 {-9, 12, -6},
                 { 7, 14,  5},
