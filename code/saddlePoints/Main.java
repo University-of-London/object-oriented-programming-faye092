@@ -7,8 +7,7 @@ public class Main {
      * @param args Unused.
      */
     public static void main(String[] args) {
-        SaddlePoints saddlePoints = new SaddlePoints();
-        saddlePoints.run();
+        new SaddlePoints().run();
     }
 
 }
