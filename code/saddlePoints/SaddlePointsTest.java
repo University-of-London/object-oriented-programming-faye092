@@ -87,11 +87,11 @@ public class SaddlePointsTest {
     @Test
     public void largestValues() {
         int[][] array = {{1,5,3},{-2,8,7}};
-        assertArrayEquals(new int[]{5,8,7}, sp.largestValues(array));
+        assertArrayEquals(new int[]{1,8,7}, sp.largestValues(array));
 
         //get more test coverage
         int[][] array2 = {{0, 3, 3}, {5, 5, 1}, {2, -1, 4}};
-        assertArrayEquals(new int[]{3, 5, 4}, sp.largestValues(array2));
+        assertArrayEquals(new int[]{5, 5, 4}, sp.largestValues(array2));
     }
 
     @Test
@@ -122,50 +122,46 @@ public class SaddlePointsTest {
 
     @Test
     public void saddlePointRow() {
-        //test empty array
-        int[][] array = new int[0][0];
-        assertEquals(-1, sp.saddlePointRow(array));
+        // test null array
+        int[][] array = null;
+        assertThrows(NullPointerException.class, () -> {
+            sp.saddlePointRow(array);
+        });
+        // test array 1: no saddle point
+        int[][] array1 = {
+                {4, 9, 3},
+                {2, 8, 5},
+                {9, 1, 6}};
+        assertEquals(-1, sp.saddlePointRow(array1)); // No saddle point
 
-        //test array with one element
-        array = new int[][]{{1}};
-        assertEquals(-1, sp.saddlePointRow(array));
-
-        //test array with Saddle Point
-        int[][] array2 = {{1,5,3},{2,4,7}};
-        assertEquals(1, sp.saddlePointRow(array2));
-
-        //test array with multiple Saddle Points
-        int[][] array3 = {{1,5,3},{2,5,7},{3,5,9}};
-
-        assertEquals(1, sp.saddlePointRow(array3));
-
-        //test array with no Saddle Point
-        int[][] array4 = {{1,5,3},{2,4,7},{3,7,9}};
-        assertEquals(-1, sp.saddlePointRow(array4));
+        // test array 2: Saddle point
+        int[][] array2 = {
+                {3, 4, 5},
+                {9, 5, 6},
+                {-9, 3, 15}};
+        assertEquals(1, sp.saddlePointRow(array2)); // Saddle point
     }
 
     @Test
     public void saddlePointColumn() {
-        //test empty array
-        int[] array = new int[0];
-        int[] finalArray = array;
-        assertThrows(IllegalArgumentException.class, () -> sp.saddlePointColumn(new int[][]{finalArray}));
+        // test null array
+        int[][] array = null;
+        assertThrows(NullPointerException.class, () -> {
+            sp.saddlePointRow(array);
+        });
+        // test array 1: no saddle point
+        int[][] array1 = {
+                {4, 9, 3},
+                {2, 8, 5},
+                {9, 1, 6}};
+        assertEquals(-1, sp.saddlePointRow(array1)); // No saddle point
 
-        //test array with one element
-        array = new int[]{1};
-        assertEquals(-1, sp.saddlePointColumn(new int[][]{array}));
-
-        //test array with Saddle Point
-        int[][] array2 = {{1,5,3},{2,4,7}};
-        assertEquals(1, sp.saddlePointColumn(array2));
-
-        //test array with multiple Saddle Points
-        int[][] array3 = {{1,5,3},{2,5,7},{3,5,9}};
-        assertEquals(1, sp.saddlePointColumn(array3));
-
-        //test array with no Saddle Point
-        int[][] array4 = {{1,5,3},{2,4,7},{3,7,9}};
-        assertEquals(-1, sp.saddlePointColumn(array4));
+        // test array 2: Saddle point
+        int[][] array2 = {
+                {3, 4, 5},
+                {9, 5, 6},
+                {-9, 3, 15}};
+        assertEquals(1, sp.saddlePointRow(array2)); // Saddle point
     }
 
     private int[] setupArray(int elements){

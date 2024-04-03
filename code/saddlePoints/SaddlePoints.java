@@ -6,7 +6,7 @@ import java.util.Random;
  * Creates a number of random arrays, and checks each array to see
  * if it contains a saddle point. Prints the arrays and the results.
  *
- * @Faye
+ * @author
  */
 public class SaddlePoints {
     /**
@@ -22,8 +22,8 @@ public class SaddlePoints {
 
         while(!hasSaddlePoint || !noSaddlePoint){
             //create different scale arrays
-            int[][] array = createRandomArray(random.nextInt(5) + 2,
-                    random.nextInt(5)+2,-10,10);
+            int[][] array = createRandomArray(random.nextInt(5) + 1,
+                    random.nextInt(5)+1,-15,20);
             printArray(array);
             printArrayInfo(array);
 
@@ -92,9 +92,9 @@ public class SaddlePoints {
      * @return The largest value in the array.
      */
     int largest(int[] array) {
-        int max = Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE; // set the max to the smallest possible value
         for (int value: array){
-            if (value > max) max = value;
+            max = Math.max(max, value);
         }
         return max;
     }
@@ -106,9 +106,9 @@ public class SaddlePoints {
      * @return The smallest value in the array.
      */
     int smallest(int[] array) {
-        int min = Integer.MAX_VALUE;
+        int min = Integer.MAX_VALUE; // set the min to the largest possible value
         for (int value: array){
-            if (value < min) min = value;
+            min = Math.min(min, value);
         }
         return min;
     }
@@ -120,11 +120,11 @@ public class SaddlePoints {
      * @return An array of the largest values in each column.
      */
     int[] largestValues(int[][] array) {
-        int[] largestValues = new int[array[0].length];
+        int[] largestValues = new int[array[0].length]; //Column length
 
-        for (int col = 0; col < array[0].length; col++){
+        for (int col = 0; col < largestValues.length; col++) {
             int colMax = Integer.MIN_VALUE;
-            for (int row = 0; row < array.length; row++){
+            for (int row = 0; row < array.length; row++) {
                 colMax = Math.max(colMax, array[row][col]);
             }
             largestValues[col] = colMax;
@@ -142,7 +142,7 @@ public class SaddlePoints {
     int[] smallestValues(int[][] array) {
         int[] smallestValues = new int[array.length];
 
-        for (int row = 0; row < array.length; row++){
+        for (int row = 0; row < smallestValues.length; row++){
             int rowMin = Integer.MAX_VALUE;
             for (int col = 0; col < array[0].length; col++){
                 rowMin = Math.min(rowMin, array[row][col]);
@@ -183,17 +183,22 @@ public class SaddlePoints {
      * @return The lowest-numbered row containing a saddle point.
      */
     int saddlePointRow(int[][] array) {
+        if (array == null) {
+            throw new NullPointerException("Input array cannot be null");
+        }
+
         int[] rowMins = smallestValues(array);
         int[] colMaxs = largestValues(array);
 
-        for (int i = 0; i < rowMins.length; i++){
-            for (int j = 0; j < colMaxs.length; j++){
-                if (rowMins[i] == colMaxs[j] /*&& array[i][j] == rowMins[i] */){
-                    return i;
+        for (int row = 0; row < array.length; row++) {
+            for (int col = 0; col < array[0].length; col++) {
+                if (rowMins[row] == colMaxs[col]) {
+                    return row;
                 }
             }
         }
-        return -1; // theoretically, this should never happen
+
+        return -1; // no saddle point found
     }
 
     /**
@@ -206,16 +211,21 @@ public class SaddlePoints {
      */
 
     int saddlePointColumn(int[][] array) {
+        if (array == null) {
+            throw new NullPointerException("Input array cannot be null");
+        }
+
         int[] rowMins = smallestValues(array);
         int[] colMaxs = largestValues(array);
 
-        for (int i = 0; i < rowMins.length; i++){
-            for (int j = 0; j < colMaxs.length; j++){
-                if (rowMins[i] == colMaxs[j] /*&& array[i][j] == rowMins[i] */){
-                    return j;
+        for (int col = 0; col < array[0].length; col++) {
+            for (int row = 0; row < array.length; row++) {
+                if (rowMins[row] == colMaxs[col]) {
+                    return col;
                 }
             }
         }
-        return -1; // theoretically, this should never happen
+
+        return -1; // no saddle point found
     }
 }
